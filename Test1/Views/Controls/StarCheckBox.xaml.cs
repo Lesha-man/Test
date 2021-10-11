@@ -86,9 +86,36 @@ namespace Test1.Views.Controls
         typeof(PointCollection),
         typeof(IconEntry));
 
+        private int _cornerNumber;
+        private int _size;
+        private int _radius;
+
         public int CornersNumber
         {
-            set => StarPoints(value, 20, 10);
+            get => _cornerNumber;
+            set 
+            {
+                _cornerNumber = value;
+                StarPoints(_cornerNumber, _size, _radius);
+            } 
+        }
+        public int Size
+        {
+            get => _size;
+            set
+            {
+                _size = value;
+                StarPoints(_cornerNumber, _size, _radius);
+            }
+        }
+        public int Radius
+        {
+            get => _radius;
+            set
+            {
+                _radius = value;
+                StarPoints(_cornerNumber, _size, _radius);
+            }
         }
         public PointCollection Points
         {

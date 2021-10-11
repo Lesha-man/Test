@@ -16,7 +16,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty SourceOnCheckProperty = BindableProperty.Create(
         nameof(SourceOnCheck),
         typeof(ImageSource),
-        typeof(IconEntry));
+        typeof(IconCheckBox));
 
         public ImageSource SourceOnCheck
         {
@@ -28,7 +28,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty SourceOnUncheckProperty = BindableProperty.Create(
         nameof(SourceOnUncheck),
         typeof(ImageSource),
-        typeof(IconEntry));
+        typeof(IconCheckBox));
 
         public ImageSource SourceOnUncheck
         {
@@ -39,7 +39,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty IsCheckedProperty = BindableProperty.Create(
         nameof(IsChecked),
         typeof(bool),
-        typeof(IconEntry),
+        typeof(IconCheckBox),
         defaultBindingMode: BindingMode.TwoWay);
 
 
@@ -52,7 +52,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty CheckedChangedProperty = BindableProperty.Create(
         nameof(CheckedChanged),
         typeof(ICommand),
-        typeof(IconEntry));
+        typeof(IconCheckBox));
 
         public ICommand CheckedChanged
         {
@@ -60,7 +60,6 @@ namespace Test1.Views.Controls
             set => SetValue(CheckedChangedProperty, value);
         }
 
-        
         public IconCheckBox()
         {
             InitializeComponent();

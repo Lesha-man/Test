@@ -30,6 +30,7 @@ namespace Test1.ViewModels
 
         public void IsFavoriteChanged()
         {
+            int a = 1 + 2;
             return;
         }
     }

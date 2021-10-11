@@ -10,7 +10,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty CommandProperty = BindableProperty.Create(
         nameof(Command),
         typeof(ICommand),
-        typeof(IconEntry));
+        typeof(IconButton));
 
         public ICommand Command
         {
@@ -21,7 +21,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty IconFirstProperty = BindableProperty.Create(
         nameof(IconFirst),
         typeof(bool),
-        typeof(IconEntry),
+        typeof(IconButton),
         false);
 
         public bool IconFirst
@@ -33,7 +33,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty SourceProperty = BindableProperty.Create(
         nameof(Source),
         typeof(ImageSource),
-        typeof(IconEntry));
+        typeof(IconButton));
 
         public ImageSource Source
         {
@@ -44,7 +44,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create(
         nameof(CornerRadius),
         typeof(float),
-        typeof(IconEntry));
+        typeof(IconButton));
 
         public float CornerRadius
         {
@@ -55,7 +55,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(
         nameof(BorderColor),
         typeof(Color),
-        typeof(IconEntry));
+        typeof(IconButton));
 
         public Color BorderColor
         {
@@ -66,7 +66,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty HasShadowProperty = BindableProperty.Create(
         nameof(HasShadow),
         typeof(bool),
-        typeof(IconEntry));
+        typeof(IconButton));
 
         public bool HasShadow
         {
@@ -77,7 +77,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty TextColorProperty = BindableProperty.Create(
         nameof(TextColor),
         typeof(Color),
-        typeof(IconEntry));
+        typeof(IconButton));
 
         public Color TextColor
         {
@@ -88,7 +88,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty TextProperty = BindableProperty.Create(
         nameof(Text),
         typeof(string),
-        typeof(IconEntry));
+        typeof(IconButton));
 
         public string Text
         {
@@ -99,7 +99,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(
         nameof(FontSize),
         typeof(double),
-        typeof(IconEntry));
+        typeof(IconButton));
 
         [Xamarin.Forms.TypeConverter(typeof(Xamarin.Forms.FontSizeConverter))]
         public double FontSize
@@ -111,7 +111,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(
         nameof(IconSize),
         typeof(double),
-        typeof(IconEntry));
+        typeof(IconButton));
 
         public double IconSize
         {

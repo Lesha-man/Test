@@ -16,6 +16,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+
             <CollectionView ItemsSource="{Binding ChatList}" Margin="10">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"/>
@@ -58,25 +59,27 @@
                                 Grid.Column="1"
                                 Grid.Row="1"
                                 MaxLines="2"/>
-                            <!--<controls:StarCheckBox
-                                Grid.Column="2"
-								Grid.Row="1"
-                                CornersNumber="5"
-								Stroke="Black"
-                                BorderThickness="2"
-                                IsChecked="{Binding IsFavorite}"
-                                Fill="Yellow"
-                                CheckedChanged="{Binding Source={x:Reference viewmodel:ChatListViewModel}, Path=IsFavoriteChangedCommand}"/>-->
                             <controls:IconCheckBox
                                 Grid.Column="2"
                                 Grid.Row="1"
                                 IsChecked="{Binding IsFavorite}"
                                 SourceOnCheck="star_gold.png"
-                                SourceOnUncheck="star_empty.png"/>
+                                SourceOnUncheck="star_empty.png"
+                                CheckedChanged="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ChatListViewModel}}, Path=IsFavoriteChangedCommand}"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <controls:StarCheckBox
+                Grid.Row="1"
+                CornersNumber="{Binding Source={x:Reference stepper}, Path=Value}"
+                Size="50"
+                Radius="25"
+				Stroke="Black"
+                BorderThickness="2"
+                Fill="Yellow"
+                CheckedChanged="{Binding IsFavoriteChangedCommand}"
+                />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
