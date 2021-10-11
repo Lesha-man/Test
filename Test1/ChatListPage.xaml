@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Test1.ViewModel"
+             xmlns:model="clr-namespace:Test1.Model"
+             x:Class="Test1.ChatListPage"
+             x:DataType="viewmodel:ChatListViewModel">
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <CollectionView ItemsSource="{Binding ChatList}" Margin="10">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Chat">
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <!--CornerRadius="{Binding Source={x:Reference circle}, Path=Width,  Converter=, ConverterParameter=2 }">-->
+                            <Frame
+                                x:Name="circle"
+                                Grid.RowSpan="2"
+                                HeightRequest="70"
+                                WidthRequest="70"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Padding="0"
+                                CornerRadius="35">
+                                <Image 
+                                Source="{Binding Image}" 
+                                Aspect="AspectFill"/>
+                            </Frame>
+                            <Label 
+                                Text="{Binding Name}" 
+                                Grid.Column="1"
+                                MaxLines="1"/>
+                            <Label 
+                                Text="{Binding Time, StringFormat='{0:HH:ss}'}" 
+                                Grid.Column="2"
+                                HorizontalTextAlignment="End"/>
+                            <Label 
+                                Text="{Binding LastMessage}"
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                MaxLines="2"
+                                LineBreakMode="TailTruncation"/>
+                            <CheckBox 
+                                IsChecked="{Binding IsFavorite}"
+                                Grid.Column="2"
+                                Grid.Row="1"
+                                />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
