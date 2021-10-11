@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls ="clr-namespace:Test1.Views.Controls"
+             x:Name="this"
+             x:Class="Test1.Views.Controls.StarCheckBox">
+  <ContentView.Content>
+        <Grid BindingContext="{x:Reference this}">
+            <Polygon Points="{Binding Points}"
+				    Stroke="{Binding Stroke}"
+				    StrokeThickness="{Binding BorderThickness}"
+				    StrokeLineJoin="{Binding CornerType}">
+            </Polygon>
+            <Polygon Points="{Binding Points}"
+				    StrokeThickness="{Binding BorderThickness}"
+				    StrokeLineJoin="{Binding CornerType}"
+                     Fill="{Binding Fill}"
+                     IsVisible="{Binding IsChecked}">
+            </Polygon>
+        </Grid>
+    </ContentView.Content>
+    <ContentView.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding CheckedChanged}"/>
+        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+    </ContentView.GestureRecognizers>
+</ContentView>

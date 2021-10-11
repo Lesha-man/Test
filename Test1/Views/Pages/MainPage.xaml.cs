@@ -1,7 +1,7 @@
-﻿using Test1.ViewModel;
+﻿using Test1.ViewModels;
 using Xamarin.Forms;
 
-namespace Test1
+namespace Test1.Views.Pages
 {
     public partial class MainPage : ContentPage
     {
@@ -12,11 +12,6 @@ namespace Test1
             BindingContext = _viewModel = new UserViewModel(Navigation);
             
             InitializeComponent();
-        }
-
-        private void Button_Clicked(object sender, System.EventArgs e)
-        {
-
         }
     }
 }

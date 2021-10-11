@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace Test1.Controls
+namespace Test1.Views.Controls
 {
     public class WithoutLineEntry : Entry
     {

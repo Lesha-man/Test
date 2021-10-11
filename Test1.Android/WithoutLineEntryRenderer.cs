@@ -1,5 +1,5 @@
 ﻿using Android.Content;
-using Test1.Controls;
+using Test1.Views.Controls;
 using Test1.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;

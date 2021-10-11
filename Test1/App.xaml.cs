@@ -1,4 +1,5 @@
 ﻿using System;
+using Test1.Views.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

@@ -1,8 +1,10 @@
-﻿using Test1.ViewModel;
+﻿using System;
+using Test1.ViewModels;
 using Xamarin.Forms;
+using Xamarin.Forms.Shapes;
 using Xamarin.Forms.Xaml;
 
-namespace Test1
+namespace Test1.Views.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChatListPage : ContentPage
@@ -11,13 +13,7 @@ namespace Test1
         public ChatListPage()
         {
             BindingContext = _viewModel = new ChatListViewModel();
-
             InitializeComponent();
-        }
-
-        private void CheckBox_CheckedChanged()
-        {
-
         }
     }
 }

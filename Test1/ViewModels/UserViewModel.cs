@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel;
 using System.Windows.Input;
-using Test1.Model;
+using Test1.Models;
+using Test1.Views.Pages;
 using Xamarin.Forms;
 
-namespace Test1.ViewModel
+namespace Test1.ViewModels
 {
     public class UserViewModel : INotifyPropertyChanged
     {
@@ -61,8 +62,7 @@ namespace Test1.ViewModel
         }
         protected void OnPropertyChanged(string propName)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
         public async void SignUp()
         {

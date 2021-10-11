@@ -1,7 +1,7 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Test1.Controls
+namespace Test1.Views.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 

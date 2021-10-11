@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Test1.Model
+namespace Test1.Models
 {
     public class User
     {

@@ -16,22 +16,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="ChatListPage.xaml.cs">
+    <Compile Update="Views\Controls\IconCheckBox.xaml.cs">
+      <DependentUpon>IconCheckBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Pages\ChatListPage.xaml.cs">
       <DependentUpon>ChatListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Controls\ContentViews\IconEntry.xaml.cs">
+    <Compile Update="Views\Controls\IconEntry.xaml.cs">
       <DependentUpon>IconEntry.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="ChatListPage.xaml">
+    <EmbeddedResource Update="Views\Controls\StarCheckBox.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Controls\ContentViews\IconButton.xaml">
+    <EmbeddedResource Update="Views\Pages\ChatListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Controls\ContentViews\IconEntry.xaml">
+    <EmbeddedResource Update="Views\Controls\IconButton.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Controls\IconEntry.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

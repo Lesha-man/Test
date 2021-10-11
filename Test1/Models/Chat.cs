@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace Test1.Model
+namespace Test1.Models
 {
     public class Chat
     {
