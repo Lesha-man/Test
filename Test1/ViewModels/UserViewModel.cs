@@ -73,17 +73,18 @@ namespace Test1.ViewModels
         }
         public void SignIn()
         {
-            if (user != null)
-                return;  //Something....
+            if (user == null)
+                return;
         }
-        public void SignInWithFacebook()
+        public async void SignInWithFacebook()
         {
-            if (user != null)
-                return;  //Something....
+            if (user == null)
+                return;
+            await Navigation.PushAsync(new ImageListPage());
         }
         public void SignInWithGoogle()
         {
-            if (user != null)
+            if (user == null)
                 return;  //Something....
         }
     }

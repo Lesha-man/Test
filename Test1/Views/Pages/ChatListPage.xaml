@@ -4,16 +4,25 @@
              xmlns:viewmodel="clr-namespace:Test1.ViewModels"
              xmlns:controls="clr-namespace:Test1.Views.Controls"
              xmlns:model="clr-namespace:Test1.Models"
+             xmlns:converters="clr-namespace:Test1.Converters"
              x:Class="Test1.Views.Pages.ChatListPage"
              x:DataType="viewmodel:ChatListViewModel"
              x:Name="this">
-
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DobleToIntConverter x:Key="doubletoInt"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -49,37 +58,47 @@
                             <Label 
                                 Text="{Binding Name}" 
                                 Grid.Column="1"
-                                MaxLines="1"/>
+                                MaxLines="1"
+                                />
                             <Label 
                                 Text="{Binding Time, StringFormat='{0:HH:ss}'}" 
                                 Grid.Column="2"
-                                HorizontalTextAlignment="End"/>
+                                HorizontalTextAlignment="End"
+                                />
                             <Label 
                                 Text="{Binding LastMessage}"
                                 Grid.Column="1"
                                 Grid.Row="1"
-                                MaxLines="2"/>
+                                MaxLines="2"
+                                />
                             <controls:IconCheckBox
                                 Grid.Column="2"
                                 Grid.Row="1"
                                 IsChecked="{Binding IsFavorite}"
                                 SourceOnCheck="star_gold.png"
                                 SourceOnUncheck="star_empty.png"
-                                CheckedChanged="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ChatListViewModel}}, Path=IsFavoriteChangedCommand}"/>
+                                CheckedChanged="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ChatListViewModel}}, Path=IsFavoriteChangedCommand}"
+                                />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <controls:StarCheckBox
                 Grid.Row="1"
-                CornersNumber="{Binding Source={x:Reference stepper}, Path=Value}"
+                CornersNumber="{Binding Source={x:Reference slider}, Path=Value, Converter={StaticResource doubletoInt}}"
                 Size="50"
-                Radius="25"
+                Radius="20"
 				Stroke="Black"
                 BorderThickness="2"
                 Fill="Yellow"
                 CheckedChanged="{Binding IsFavoriteChangedCommand}"
                 />
+            <Slider x:Name ="slider"
+                    Maximum="10"               
+                    Minimum="3"
+                    Grid.Row="2"
+                    BackgroundColor="Blue"
+                    />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

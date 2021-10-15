@@ -112,7 +112,7 @@
                 Text="Sign in with"
                 FontSize="Body"
                 IconSize="20"
-                IconFirst="False"
+                IconFirst="True"
                 Command="{Binding SignInWithGoogleCommand}"/>
             <Label 
                 FontSize="Small"

@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls ="clr-namespace:Test1.Views.Controls"
              x:Name="this"
-             x:Class="Test1.Views.Controls.StarCheckBox">
+             x:Class="Test1.Views.Controls.StarCheckBox"
+             BindingContext="{x:Reference this}">
   <ContentView.Content>
-        <Grid BindingContext="{x:Reference this}">
+        <Grid>
             <Polygon Points="{Binding Points}"
 				    Stroke="{Binding Stroke}"
 				    StrokeThickness="{Binding BorderThickness}"

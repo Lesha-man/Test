@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Test1.Views.Pages.ImageListPage"             
+             xmlns:viewmodel="clr-namespace:Test1.ViewModels"
+             xmlns:controls="clr-namespace:Test1.Views.Controls"
+             xmlns:model="clr-namespace:Test1.Models"
+             xmlns:converters="clr-namespace:Test1.Converters"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:DataType="viewmodel:ImageListViewModel">
+    
+    <ContentPage.Content>
+        <CollectionView ItemsSource="{Binding ImageList}"
+                        x:Name="collection"
+                        Margin="10"
+                        RemainingItemsThreshold="30"
+                        RemainingItemsThresholdReachedCommand="{Binding LoadUpNextCommand}"
+                        >
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Span="4" 
+                                 Orientation="Vertical" 
+                                 />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="x:String"
+                              >
+                    <Grid x:Name="tgrid" HeightRequest="{Binding Path=Width, Source={RelativeSource Self}}"
+                           BackgroundColor="Wheat">
+                        <BoxView Margin="5" BackgroundColor="White"/>
+                        <!--<ff:CachedImage Source="{Binding .}" 
+                                        LoadingPlaceholder="image_loader.gif"
+                                        ErrorPlaceholder="image_error.png" 
+                                        Margin="5"
+                                        BackgroundColor="Blue"
+                                        />-->
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <!--<Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="TopGrid" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Frame x:Name="Button1" Grid.Column="0" BackgroundColor="Pink" HeightRequest="{Binding Source={RelativeSource Self}, Path=Width}" Padding="0"/>
+                <Button x:Name="Button2" Grid.Column="1" Text="2" BackgroundColor="Pink"/>
+                <Button x:Name="Button3" Grid.Column="2" Text="3" BackgroundColor="Pink"/>
+                <Button x:Name="Button4" Grid.Column="3" Text="4" BackgroundColor="Pink"/>
+            </Grid>
+        </Grid>-->
+    </ContentPage.Content>
+</ContentPage>

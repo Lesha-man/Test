@@ -17,7 +17,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty IsCheckedProperty = BindableProperty.Create(
         nameof(IsChecked),
         typeof(bool),
-        typeof(IconEntry),
+        typeof(StarCheckBox),
         defaultBindingMode: BindingMode.TwoWay);
 
         public bool IsChecked
@@ -29,7 +29,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty CheckedChangedProperty = BindableProperty.Create(
         nameof(CheckedChanged),
         typeof(ICommand),
-        typeof(IconEntry));
+        typeof(StarCheckBox));
 
         public ICommand CheckedChanged
         {
@@ -40,7 +40,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty StrokeProperty = BindableProperty.Create(
         nameof(Stroke),
         typeof(Brush),
-        typeof(IconEntry));
+        typeof(StarCheckBox));
 
         public Brush Stroke
         {
@@ -51,7 +51,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty FillProperty = BindableProperty.Create(
         nameof(Fill),
         typeof(Brush),
-        typeof(IconEntry));
+        typeof(StarCheckBox));
 
         public Brush Fill
         {
@@ -62,7 +62,7 @@ namespace Test1.Views.Controls
         public static readonly BindableProperty BorderThicknessProperty = BindableProperty.Create(
         nameof(BorderThickness),
         typeof(double),
-        typeof(IconEntry));
+        typeof(StarCheckBox));
 
         public double BorderThickness
         {
@@ -70,10 +70,15 @@ namespace Test1.Views.Controls
             set => SetValue(BorderThicknessProperty, value);
         }
 
+        static void OnEventNameChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            return;
+        }
+
         public static readonly BindableProperty CornerTypeProperty = BindableProperty.Create(
         nameof(CornerType),
         typeof(PenLineJoin),
-        typeof(IconEntry));
+        typeof(StarCheckBox));
 
         public PenLineJoin CornerType
         {
@@ -81,55 +86,57 @@ namespace Test1.Views.Controls
             set => SetValue(CornerTypeProperty, value);
         }
 
-        public static readonly BindableProperty PointsProperty = BindableProperty.Create(
-        nameof(Points),
-        typeof(PointCollection),
-        typeof(IconEntry));
 
-        private int _cornerNumber;
-        private int _size;
-        private int _radius;
-
+        public static readonly BindableProperty CornersNumberProperty = BindableProperty.Create(
+        nameof(CornersNumber),
+        typeof(int),
+        typeof(StarCheckBox),
+        propertyChanged: OnEventFormChanged);
         public int CornersNumber
         {
-            get => _cornerNumber;
-            set 
-            {
-                _cornerNumber = value;
-                StarPoints(_cornerNumber, _size, _radius);
-            } 
+            get => (int)GetValue(CornersNumberProperty);
+            set => SetValue(CornersNumberProperty, value);
         }
-        public int Size
+
+        public static readonly BindableProperty SizeProperty = BindableProperty.Create(
+        nameof(Size),
+        typeof(double),
+        typeof(StarCheckBox),
+        propertyChanged: OnEventFormChanged);
+        public double Size
         {
-            get => _size;
-            set
-            {
-                _size = value;
-                StarPoints(_cornerNumber, _size, _radius);
-            }
+            get => (double)GetValue(SizeProperty);
+            set => SetValue(SizeProperty, value);
         }
-        public int Radius
+
+        public static readonly BindableProperty RadiusProperty = BindableProperty.Create(
+        nameof(Radius),
+        typeof(double),
+        typeof(StarCheckBox),
+        propertyChanged: OnEventFormChanged);
+        public double Radius
         {
-            get => _radius;
-            set
-            {
-                _radius = value;
-                StarPoints(_cornerNumber, _size, _radius);
-            }
+            get => (double)GetValue(RadiusProperty);
+            set => SetValue(RadiusProperty, value);
         }
+
         public PointCollection Points
         {
-            get => (PointCollection)GetValue(PointsProperty);
-            set => SetValue(PointsProperty, value);
+            get;
+            set;
         }
+
         public StarCheckBox()
         {
+            Points = new PointCollection();
+
             InitializeComponent();
         }
 
         private void StarPoints(int num_points, double outSize, double inSize)
         {
-            Points = new PointCollection();
+            Points.Clear();
+
             double outHalf = outSize / 2;
             double inHalf = inSize / 2;
 
@@ -152,6 +159,11 @@ namespace Test1.Views.Controls
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             IsChecked = !IsChecked;
+        }
+
+        static void OnEventFormChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            ((StarCheckBox)bindable).StarPoints(((StarCheckBox)bindable).CornersNumber, ((StarCheckBox)bindable).Size, ((StarCheckBox)bindable).Radius);
         }
     }
 }
