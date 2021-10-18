@@ -22,6 +22,7 @@ namespace Test1.Droid
                 Control.SetBackground(null);
                 Control.SetPadding(5, 0, 0, 0);
             }
+
         }
     }
 

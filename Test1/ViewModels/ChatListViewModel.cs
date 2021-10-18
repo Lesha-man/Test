@@ -21,6 +21,17 @@ namespace Test1.ViewModels
             new Chat("Nike", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "gsfdgsgfgggggggggggggggggggggggggggggggjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj", false),
             new Chat("Maria", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "oijfojgosdjdgosjgosij", false),
             new Chat("Un", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "1234567897654321", false),
+            new Chat("Un", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "1234567897654321", false),
+            new Chat("Un", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "1234567897654321", false),
+            new Chat("Un", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "1234567897654321", false),
+            new Chat("Un", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "1234567897654321", false),
+            new Chat("Un", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "1234567897654321", false),
+            new Chat("Un", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "1234567897654321", false),
+            new Chat("Un", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "1234567897654321", false),
+            new Chat("Un", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "1234567897654321", false),
+            new Chat("Un", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "1234567897654321", false),
+            new Chat("Un", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "1234567897654321", false),
+            new Chat("Un", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "1234567897654321", false),
             new Chat("Man", "https://pbs.twimg.com/profile_images/663765224751808513/xfjW4C_6_400x400.png", DateTime.Now, "Bye", false),};
         }
         protected void OnPropertyChanged(string propName)

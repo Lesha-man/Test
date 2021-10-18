@@ -20,5 +20,9 @@ namespace Test1.Views.Pages
             InitializeComponent();
         }
 
+        private void Grid_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            ((Grid)sender).HeightRequest = Width / 4;
+        }
     }
 }

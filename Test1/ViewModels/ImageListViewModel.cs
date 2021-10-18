@@ -36,7 +36,10 @@ namespace Test1.ViewModels
                 "https://icon-library.com/images/64-x-64-icon/64-x-64-icon-11.jpg",
                 "https://icon-library.com/images/64-x-64-icon/64-x-64-icon-3.jpg",
                 "https://icon-library.com/images/64-x-64-icon/64-x-64-icn-3.jpg"};
-            ImageList.Add(new string(List[random.Next(4)]));
+            for (int i = 0; i < 40; i++)
+            {
+                ImageList.Add(new string(List[random.Next(4)]));
+            }
         }
 
         private async void LoadUpNext()

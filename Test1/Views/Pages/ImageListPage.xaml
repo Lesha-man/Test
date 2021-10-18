@@ -11,28 +11,22 @@
     
     <ContentPage.Content>
         <CollectionView ItemsSource="{Binding ImageList}"
-                        x:Name="collection"
                         Margin="10"
                         RemainingItemsThreshold="30"
-                        RemainingItemsThresholdReachedCommand="{Binding LoadUpNextCommand}"
-                        >
+                        RemainingItemsThresholdReachedCommand="{Binding LoadUpNextCommand}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Span="4" 
-                                 Orientation="Vertical" 
-                                 />
+                                 Orientation="Vertical"/>
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="x:String"
-                              >
-                    <Grid x:Name="tgrid" HeightRequest="{Binding Path=Width, Source={RelativeSource Self}}"
-                           BackgroundColor="Wheat">
-                        <BoxView Margin="5" BackgroundColor="White"/>
-                        <!--<ff:CachedImage Source="{Binding .}" 
+                <DataTemplate x:DataType="x:String">
+                    <Grid PropertyChanged="Grid_PropertyChanged">
+                        <ff:CachedImage Source="{Binding .}" 
                                         LoadingPlaceholder="image_loader.gif"
                                         ErrorPlaceholder="image_error.png" 
                                         Margin="5"
                                         BackgroundColor="Blue"
-                                        />-->
+                                        />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
