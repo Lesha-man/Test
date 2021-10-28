@@ -11,6 +11,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Images\facebook.png" />
+    <None Remove="Resources\Images\font_registration.png" />
+    <None Remove="Resources\Images\google.png" />
+    <None Remove="Resources\Images\image_error.png" />
+    <None Remove="Resources\Images\image_loader.gif" />
+    <None Remove="Resources\Images\mail.png" />
+    <None Remove="Resources\Images\password.png" />
+    <None Remove="Resources\Images\star_empty.png" />
+    <None Remove="Resources\Images\star_gold.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\facebook.png" />
+    <EmbeddedResource Include="Resources\Images\font_registration.png" />
+    <EmbeddedResource Include="Resources\Images\google.png" />
+    <EmbeddedResource Include="Resources\Images\image_error.png" />
+    <EmbeddedResource Include="Resources\Images\image_loader.gif" />
+    <EmbeddedResource Include="Resources\Images\mail.png" />
+    <EmbeddedResource Include="Resources\Images\password.png" />
+    <EmbeddedResource Include="Resources\Images\star_empty.png" />
+    <EmbeddedResource Include="Resources\Images\star_gold.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.9.961" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.9.961" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.9.961" />
@@ -33,7 +57,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\Controls\CalendarView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Controls\StarCheckBox.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Pages\BindableLayoutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Pages\ChatListPage.xaml">

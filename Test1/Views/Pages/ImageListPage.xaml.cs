@@ -22,7 +22,7 @@ namespace Test1.Views.Pages
 
         private void Grid_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            ((Grid)sender).HeightRequest = Width / 4;
+            //((Grid)sender).HeightRequest = Width / 4;
         }
     }
 }

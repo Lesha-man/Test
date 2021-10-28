@@ -82,10 +82,11 @@ namespace Test1.ViewModels
                 return;
             await Navigation.PushAsync(new ImageListPage());
         }
-        public void SignInWithGoogle()
+        public async void SignInWithGoogle()
         {
             if (user == null)
-                return;  //Something....
+                return;
+            await Navigation.PushAsync(new BindableLayoutPage());
         }
     }
 }

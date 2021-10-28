@@ -13,7 +13,6 @@ namespace Test1.Views.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StarCheckBox : ContentView
     {
-
         public static readonly BindableProperty IsCheckedProperty = BindableProperty.Create(
         nameof(IsChecked),
         typeof(bool),

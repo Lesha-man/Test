@@ -5,6 +5,7 @@
              xmlns:controls="clr-namespace:Test1.Views.Controls"
              xmlns:model="clr-namespace:Test1.Models"
              xmlns:converters="clr-namespace:Test1.Converters"
+             xmlns:resources="clr-namespace:Test1.Constants"
              x:Class="Test1.Views.Pages.ChatListPage"
              x:DataType="viewmodel:ChatListViewModel"
              x:Name="this">
@@ -12,6 +13,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:DobleToIntConverter x:Key="doubletoInt"/>
+            <converters:EmbeddedImageResourceConverter x:Key="EmbeddedImageResource"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     
@@ -73,14 +75,19 @@
                                 Grid.Row="1"
                                 MaxLines="2"
                                 />
-                            <controls:IconCheckBox
+                            <!--<controls:IconCheckBox
                                 Grid.Column="2"
                                 Grid.Row="1"
                                 IsChecked="{Binding IsFavorite}"
-                                SourceOnCheck="star_gold.png"
-                                SourceOnUncheck="star_empty.png"
+                                SourceOnCheck="{Binding Source={x:Static resources:Images.StarGold}, Converter={StaticResource EmbeddedImageResource}}"
+                                SourceOnUncheck="{Binding Source={x:Static resources:Images.StarEmpty}, Converter={StaticResource EmbeddedImageResource}}"
                                 CheckedChanged="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ChatListViewModel}}, Path=IsFavoriteChangedCommand}"
-                                />
+                                />-->
+                            <controls:RatingView MaxValue="5"
+                                                 Value="1"
+                                                 SourceOnCheck="{Binding Source={x:Static resources:Images.StarGold}, Converter={StaticResource EmbeddedImageResource}}"
+                                                 SourceOnUncheck="{Binding Source={x:Static resources:Images.StarEmpty}, Converter={StaticResource EmbeddedImageResource}}"
+                                                 />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
