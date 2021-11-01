@@ -4,7 +4,8 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Name="this"
              BindingContext="{x:Reference this}"
-             xmlns:controls="clr-namespace:Test1.Views.Controls"
+             xmlns:controls="clr-namespace:Test1.Views.Controls" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="Test1.Views.Controls.CalendarView">
 
     <ContentView.Resources>
@@ -52,13 +53,13 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="2*" />
             </Grid.RowDefinitions>
-            <Label x:Name="MonthNameAndYear"
+            <!--<Label x:Name="MonthNameAndYear"
                    Text="{Binding CurrentItem.Date, Source={x:Reference carousel}, StringFormat='{0:MMMM yyyy}'}"
                    Grid.ColumnSpan="5"
                    FontSize="Large"
                    Margin="10, 0, 0, 0"
                    VerticalOptions="Center"
-                   TextColor="Black"/>
+                   TextColor="Black"/>-->
             <Button Text="&lt;"
                     Grid.Column="5"
                     BackgroundColor="Transparent"
@@ -124,72 +125,46 @@
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
                    Grid.Column="6"/>
-            <CarouselView x:Name="carousel"
-                          ItemsSource="{Binding Calendar.Months}"
-                          Grid.ColumnSpan="7"
-                          Grid.Row="2"
-                          PositionChanged="carousel_PositionChanged"
-                          Loop="False">
-                <CarouselView.ItemTemplate>
+            <CollectionView x:Name="daysCollection"
+                            ItemsSource="{Binding Months}"
+                            Scrolled="daysCollection_Scrolled"
+                            Grid.Row="2"
+                            Grid.ColumnSpan="7">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout SnapPointsAlignment="Start"
+                                       SnapPointsType="MandatorySingle"
+                                       Orientation="Horizontal"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout x:DataType="controls:Month" 
-                                     BindableLayout.ItemsSource="{Binding Weeks}">
+                        <Frame Padding="0" 
+                               WidthRequest="{Binding Width, Source={x:Reference this}}">
+                        <FlexLayout x:DataType="controls:Month"
+                                    BindableLayout.ItemsSource="{Binding Days}"
+                                    Wrap="Wrap">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <FlexLayout x:DataType="controls:Week" 
-                                                Direction="Row"
-                                                JustifyContent="SpaceAround"
-                                                BindableLayout.ItemsSource="{Binding Days}"
-                                                VerticalOptions="FillAndExpand">
-                                        <BindableLayout.ItemTemplate>
-                                            <DataTemplate>
-                                                <Frame x:DataType="controls:Day"
-                                                       FlexLayout.Basis="13%"
-                                                       Padding="0"
-                                                       HasShadow="False"
-                                                       BackgroundColor="Transparent"
-                                                       BorderColor="LightGray">
-                                                    <Frame.Triggers>
-                                                        <DataTrigger TargetType="Frame"
-                                                                     Binding="{Binding SelectedDay.Data, Source={RelativeSource AncestorType={x:Type controls:Calendar}}, Converter={StaticResource EqualConverter}, ConverterParameter={Binding Date}}"
-                                                                     Value="10">
-                                                            <Setter Property="BackgroundColor" Value="Black"/>
-                                                        </DataTrigger>
-                                                    </Frame.Triggers>
-                                                    <Grid BackgroundColor="Transparent">
-                                                        <Grid.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="DaySelected" />
-                                                        </Grid.GestureRecognizers>
-                                                        <Label Text="{Binding Date.Day}" 
-                                                               VerticalTextAlignment="Center"
-                                                               HorizontalTextAlignment="Center"
-                                                               TextColor="Black"
-                                                               HorizontalOptions="FillAndExpand"/>
-                                                        <StackLayout BindableLayout.ItemsSource="{Binding Reminders}"
-                                                                     Orientation="Horizontal"
-                                                                     HorizontalOptions="Center">
-                                                            <BindableLayout.ItemTemplate>
-                                                                <DataTemplate>
-                                                                    <BoxView CornerRadius="2" 
-                                                                             WidthRequest="4"
-                                                                             HeightRequest="4"
-                                                                             BackgroundColor="Green"
-                                                                             VerticalOptions="End"
-                                                                             Margin="0,0,0,3"/>
-                                                                </DataTemplate>
-                                                            </BindableLayout.ItemTemplate>
-                                                        </StackLayout>
-                                                    </Grid>
-                                                </Frame>
-                                            </DataTemplate>
-                                        </BindableLayout.ItemTemplate>
-                                    </FlexLayout>
+                                    <Frame x:DataType="sys:DateTime"
+                                            Padding="0"
+                                            HasShadow="False"
+                                            BackgroundColor="Transparent"
+                                            BorderColor="LightGray"
+                                           FlexLayout.Basis="14.28%">
+                                        <Grid BackgroundColor="Transparent">
+                                            <Label Text="{Binding Day}" 
+                                                    VerticalTextAlignment="Center"
+                                                    HorizontalTextAlignment="Center"
+                                                    TextColor="Black"
+                                                    HorizontalOptions="FillAndExpand"/>
+                                        </Grid>
+                                    </Frame>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
-                        </StackLayout>
+                        </FlexLayout>
+                        </Frame>
                     </DataTemplate>
-                </CarouselView.ItemTemplate>
-            </CarouselView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
             <BoxView BackgroundColor="Black" 
                      HeightRequest="1" 
                      VerticalOptions="Center"
@@ -200,7 +175,7 @@
                    Grid.ColumnSpan="7"
                    HorizontalOptions="Center"
                    Grid.Row="4"/>
-            <CollectionView BindingContext="{Binding Calendar.SelectedDay}" 
+            <!--<CollectionView BindingContext="{Binding Calendar.SelectedDay}" 
                             ItemsSource="{Binding Reminders}"
                             Grid.ColumnSpan="7"
                             Grid.Row="5">
@@ -251,7 +226,7 @@
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-            </CollectionView>
+            </CollectionView>-->
         </Grid>
     </ContentView.Content>
 </ContentView>
