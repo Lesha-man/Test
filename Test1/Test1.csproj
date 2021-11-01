@@ -35,6 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.2.0" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.9.961" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.9.961" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.9.961" />
