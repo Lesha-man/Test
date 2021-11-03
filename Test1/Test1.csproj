@@ -43,9 +43,13 @@
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.9.961" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Plugin.Calendar" Version="1.4.5304" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\Controls\Calendar\CalendarViewItemDay.xaml.cs">
+      <DependentUpon>CalendarViewItemDay.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Controls\IconCheckBox.xaml.cs">
       <DependentUpon>IconCheckBox.xaml</DependentUpon>
     </Compile>
@@ -58,7 +62,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\Controls\CalendarView.xaml">
+    <EmbeddedResource Update="Views\Controls\Calendar\CalendarView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Controls\Calendar\CalendarViewItemDay.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Controls\Calendar\CalendarViewItemMonth.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Controls\StarCheckBox.xaml">

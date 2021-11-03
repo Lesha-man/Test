@@ -4,7 +4,7 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Name="this"
              BindingContext="{x:Reference this}"
-             xmlns:controls="clr-namespace:Test1.Views.Controls" 
+             xmlns:controls="clr-namespace:Test1.Views.Controls"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="Test1.Views.Controls.CalendarView">
 
@@ -12,6 +12,7 @@
         <ResourceDictionary>
             <xct:EqualConverter x:Key="EqualConverter" />
         </ResourceDictionary>
+
         <!--<Style TargetType="Grid" x:Key="DayStyle">
             <Setter Property="VisualStateManager.VisualStateGroups">
                 <VisualStateGroupList>
@@ -35,7 +36,7 @@
     
     
   <ContentView.Content>
-        <Grid>
+            <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -46,20 +47,20 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.8*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="7*" />
-                <RowDefinition Height="0.2*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="2*" />
+                <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
-            <!--<Label x:Name="MonthNameAndYear"
+            <Label x:Name="MonthNameAndYear"
                    Text="{Binding CurrentItem.Date, Source={x:Reference carousel}, StringFormat='{0:MMMM yyyy}'}"
                    Grid.ColumnSpan="5"
                    FontSize="Large"
                    Margin="10, 0, 0, 0"
                    VerticalOptions="Center"
-                   TextColor="Black"/>-->
+                   TextColor="Black"/>
             <Button Text="&lt;"
                     Grid.Column="5"
                     BackgroundColor="Transparent"
@@ -125,46 +126,22 @@
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
                    Grid.Column="6"/>
-            <CollectionView x:Name="daysCollection"
-                            ItemsSource="{Binding Months}"
-                            Scrolled="daysCollection_Scrolled"
-                            Grid.Row="2"
-                            Grid.ColumnSpan="7">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout SnapPointsAlignment="Start"
-                                       SnapPointsType="MandatorySingle"
-                                       Orientation="Horizontal"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
+                <CarouselView x:Name="carousel"
+                          PositionChanged="carousel_PositionChanged"
+                          ItemsSource="{Binding Months}"
+                              HeightRequest="{Binding Width, Source={RelativeSource Self}}"
+                          Grid.Row="2"
+                          Grid.ColumnSpan="7">
+                    <CarouselView.ItemTemplate>
                     <DataTemplate>
-                        <Frame Padding="0" 
-                               WidthRequest="{Binding Width, Source={x:Reference this}}">
-                        <FlexLayout x:DataType="controls:Month"
-                                    BindableLayout.ItemsSource="{Binding Days}"
-                                    Wrap="Wrap">
-                            <BindableLayout.ItemTemplate>
-                                <DataTemplate>
-                                    <Frame x:DataType="sys:DateTime"
-                                            Padding="0"
-                                            HasShadow="False"
-                                            BackgroundColor="Transparent"
-                                            BorderColor="LightGray"
-                                           FlexLayout.Basis="14.28%">
-                                        <Grid BackgroundColor="Transparent">
-                                            <Label Text="{Binding Day}" 
-                                                    VerticalTextAlignment="Center"
-                                                    HorizontalTextAlignment="Center"
-                                                    TextColor="Black"
-                                                    HorizontalOptions="FillAndExpand"/>
-                                        </Grid>
-                                    </Frame>
-                                </DataTemplate>
-                            </BindableLayout.ItemTemplate>
-                        </FlexLayout>
-                        </Frame>
+                        <controls:CalendarViewItemMonth Month="{Binding Date}"
+                                                        SelectedDate="{Binding SelectedDate, Source={x:Reference this}}">
+                            
+                        </controls:CalendarViewItemMonth>                    
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                </CarouselView.ItemTemplate>
+
+            </CarouselView>
             <BoxView BackgroundColor="Black" 
                      HeightRequest="1" 
                      VerticalOptions="Center"
@@ -175,8 +152,7 @@
                    Grid.ColumnSpan="7"
                    HorizontalOptions="Center"
                    Grid.Row="4"/>
-            <!--<CollectionView BindingContext="{Binding Calendar.SelectedDay}" 
-                            ItemsSource="{Binding Reminders}"
+            <CollectionView ItemsSource="{Binding SelectedReminders}"
                             Grid.ColumnSpan="7"
                             Grid.Row="5">
                 <CollectionView.ItemTemplate>
@@ -226,7 +202,7 @@
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-            </CollectionView>-->
+            </CollectionView>
         </Grid>
     </ContentView.Content>
 </ContentView>

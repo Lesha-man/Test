@@ -6,8 +6,6 @@
              x:DataType="viewmodel:BindableLayoutViewModel"
              x:Class="Test1.Views.Pages.BindableLayoutPage">
     <ContentPage.Content>
-        <controls:CalendarView>
-            
-        </controls:CalendarView>
+        <controls:CalendarView/>
     </ContentPage.Content>
 </ContentPage>
