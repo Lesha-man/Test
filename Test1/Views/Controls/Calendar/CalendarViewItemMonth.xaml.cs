@@ -17,16 +17,29 @@ namespace Test1.Views.Controls
 
 
         public static readonly BindableProperty SelectedDateProperty = BindableProperty.Create(
-          nameof(SelectedDate),
-          typeof(DateTime),
-          typeof(CalendarViewItemMonth),
-          defaultBindingMode: BindingMode.TwoWay,
-          propertyChanged: OnEventSelectedDateChanged);
+        nameof(SelectedDate),
+        typeof(DateTime),
+        typeof(CalendarViewItemMonth),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanged: OnEventSelectedDateChanged);
 
         public DateTime SelectedDate
         {
             get => (DateTime)GetValue(SelectedDateProperty);
             set => SetValue(SelectedDateProperty, value);
+        }
+
+        public static readonly BindableProperty CurrentDayBackgroundColorProperty = BindableProperty.Create(
+        nameof(CurrentDayBackgroundColor),
+        typeof(Color),
+        typeof(CalendarViewItemMonth),
+        defaultBindingMode: BindingMode.OneWay,
+        propertyChanged: OnEventSelectedDateChanged);
+
+        public Color CurrentDayBackgroundColor
+        {
+            get => (Color)GetValue(CurrentDayBackgroundColorProperty);
+            set => SetValue(CurrentDayBackgroundColorProperty, value);
         }
 
         private static void OnEventSelectedDateChanged(BindableObject bindable, object oldValue, object newValue)
@@ -36,10 +49,10 @@ namespace Test1.Views.Controls
 
 
         public static readonly BindableProperty MonthProperty = BindableProperty.Create(
-          nameof(Month),
-          typeof(DateTime),
-          typeof(CalendarViewItemMonth),
-          propertyChanged: OnEventMonthChanged);
+        nameof(Month),
+        typeof(DateTime),
+        typeof(CalendarViewItemMonth),
+        propertyChanged: OnEventMonthChanged);
 
         public DateTime Month
         {
@@ -55,10 +68,7 @@ namespace Test1.Views.Controls
             {
                 for (int j = 0; j < 7; j++)
                 {
-                    var item = new CalendarViewItemDay()
-                    {
-                        BackgroundColor = Color.Transparent,
-                    };
+                    var item = new CalendarViewItemDay();
                     item.SetBinding(HeightRequestProperty, new Binding("Width", source:item));
                     var tapGestureRecogniser = new TapGestureRecognizer();
                     tapGestureRecogniser.Tapped += TapGestureRecognizer_Tapped;
@@ -77,7 +87,6 @@ namespace Test1.Views.Controls
                     return;
                 var monthStart = new DateTime(date.Year, date.Month, 1);
                 DateTime weekStart = monthStart.AddDays(-(int)monthStart.AddDays(-1).DayOfWeek);
-                //var dt = ((CalendarViewItemDay)view.grid.Children[15]).Date;
                 for (int i = 0; i < 6; i++)
                 {
                     for (int j = 0; j < 7; j++)
@@ -101,9 +110,10 @@ namespace Test1.Views.Controls
                             DataTrigger trigger = new DataTrigger(typeof(CalendarViewItemDay)) { Value = day.Date, Binding = new Binding("SelectedDate", source: view) };
                             trigger.Setters.Add(setter);
                             day.Triggers.Add(trigger);
+                            Binding currentDayColorBinding = new Binding(".", source: CurrentDayBackgroundColorProperty);
                             setter = new Setter();
                             setter.Property = CalendarViewItemDay.BackgroundColorProperty;
-                            setter.Value = Color.LightGray;
+                            setter.Value = currentDayColorBinding;
                             trigger = new DataTrigger(typeof(CalendarViewItemDay)) { Value = day.Date, Binding = new Binding("Date", source: DateTime.Now) };
                             trigger.Setters.Add(setter);
                             day.Triggers.Add(trigger);

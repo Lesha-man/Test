@@ -8,7 +8,8 @@
         <Frame Padding="0"
                HasShadow="False"
                BorderColor="{Binding BorderColor}"
-               CornerRadius="{Binding CornerRadius}">
+               CornerRadius="{Binding CornerRadius}"
+               BackgroundColor="Transparent">
             <Grid>
                 <Label Text="{Binding Date.Day}" 
                        VerticalTextAlignment="Center"
