@@ -46,15 +46,20 @@ namespace Test1.Views.Controls
             get => (DateTime)GetValue(MonthProperty);
             set => SetValue(MonthProperty, value);
         }
+
         public CalendarViewItemMonth()
         {
+
             InitializeComponent();
             for (int i = 0; i < 6; i++)
             {
                 for (int j = 0; j < 7; j++)
                 {
-                    var item = new CalendarViewItemDay();
-                    item.SetBinding(CalendarViewItemDay.HeightRequestProperty, new Binding("Width", source:item));
+                    var item = new CalendarViewItemDay()
+                    {
+                        BackgroundColor = Color.Transparent,
+                    };
+                    item.SetBinding(HeightRequestProperty, new Binding("Width", source:item));
                     var tapGestureRecogniser = new TapGestureRecognizer();
                     tapGestureRecogniser.Tapped += TapGestureRecognizer_Tapped;
                     item.GestureRecognizers.Add(tapGestureRecogniser);
@@ -72,11 +77,37 @@ namespace Test1.Views.Controls
                     return;
                 var monthStart = new DateTime(date.Year, date.Month, 1);
                 DateTime weekStart = monthStart.AddDays(-(int)monthStart.AddDays(-1).DayOfWeek);
+                //var dt = ((CalendarViewItemDay)view.grid.Children[15]).Date;
                 for (int i = 0; i < 6; i++)
                 {
                     for (int j = 0; j < 7; j++)
                     {
-                        ((CalendarViewItemDay)view.grid.Children[i * 7 + j]).Date = weekStart.AddDays(i * 7 + j);
+                        if (view.grid.Children[i * 7 + j] is CalendarViewItemDay day)
+                        {
+                            day.Date = weekStart.AddDays(i * 7 + j);
+                            if (day.Date.Month != date.Month)
+                            {
+                                day.TextColor = Color.LightGray;
+                            }
+                            else
+                            {
+                                day.TextColor = Color.Black;
+                            }
+
+                            day.Triggers.Clear();
+                            Setter setter = new Setter();
+                            setter.Property = CalendarViewItemDay.BorderColorProperty;
+                            setter.Value = Color.Black;
+                            DataTrigger trigger = new DataTrigger(typeof(CalendarViewItemDay)) { Value = day.Date, Binding = new Binding("SelectedDate", source: view) };
+                            trigger.Setters.Add(setter);
+                            day.Triggers.Add(trigger);
+                            setter = new Setter();
+                            setter.Property = CalendarViewItemDay.BackgroundColorProperty;
+                            setter.Value = Color.LightGray;
+                            trigger = new DataTrigger(typeof(CalendarViewItemDay)) { Value = day.Date, Binding = new Binding("Date", source: DateTime.Now) };
+                            trigger.Setters.Add(setter);
+                            day.Triggers.Add(trigger);
+                        }
                     }
                 }
             }
@@ -84,8 +115,7 @@ namespace Test1.Views.Controls
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            //SetValue(SelectedDateProperty, ((CalendarViewItemDay)sender).Date);
-            //SelectedDate = ((CalendarViewItemDay)sender).Date;
+            SelectedDate = ((CalendarViewItemDay)sender).Date;
         }
     }
 }

@@ -6,6 +6,8 @@
              x:DataType="viewmodel:BindableLayoutViewModel"
              x:Class="Test1.Views.Pages.BindableLayoutPage">
     <ContentPage.Content>
-        <controls:CalendarView/>
+        <ScrollView>
+            <controls:CalendarView BackgroundColor="White"/>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

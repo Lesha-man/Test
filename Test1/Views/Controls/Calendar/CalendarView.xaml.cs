@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
+
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -37,8 +35,10 @@ namespace Test1.Views.Controls
         {
             if (bindable is CalendarView view)
             {
-                view.SelectedDateChanged(((DateTime)newValue).Date, null);
-                view.SelectedReminders = new ObservableCollection<Reminder>(view.Reminders.Where((r) => r.Beginning.Date == view.SelectedDate.Date));
+                view.SelectedDateChanged?.Invoke(((DateTime)newValue).Date, null);
+                view.SelectedReminders.Clear();
+                view.Reminders.Where((r) => r.Beginning.Date == view.SelectedDate.Date).ToList().ForEach(view.SelectedReminders.Add); ;
+
             }
         }
 
@@ -90,7 +90,7 @@ namespace Test1.Views.Controls
 
         public void ChangeMonthToPrevious(int currentIndex)
         {
-            Months[currentIndex == 0 ? 2 : currentIndex - 1].Date = Months[currentIndex].Date.AddMonths(-1); 
+            Months[currentIndex == 0 ? 2 : currentIndex - 1].Date = Months[currentIndex].Date.AddMonths(-1);
             SelectedReminders.Clear();
         }
 

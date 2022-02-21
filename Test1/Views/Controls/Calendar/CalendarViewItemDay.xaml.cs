@@ -23,6 +23,18 @@ namespace Test1.Views.Controls
             set => SetValue(CornerRadiusProperty, value);
         }
 
+        public static readonly BindableProperty TextColorProperty = BindableProperty.Create(
+         nameof(TextColor),
+         typeof(Color),
+         typeof(CalendarViewItemDay),
+         defaultValue: Color.Black);
+
+        public Color TextColor
+        {
+            get => (Color)GetValue(TextColorProperty);
+            set => SetValue(TextColorProperty, value);
+        }
+
         public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(
         nameof(BorderColor),
         typeof(Color),

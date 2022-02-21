@@ -73,17 +73,6 @@
                     FontSize="Large"                    
                     Padding="0"
                     Clicked="ButtonRight_Clicked"/>
-            <!--<StackLayout BindableLayout.ItemsSource="{Binding Reminders}"
-                        Orientation="Horizontal"
-                        HorizontalOptions="Center">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Label Text="MON"
-                               Grid.Row="1"
-                               Grid.Column="0"/>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </StackLayout>-->
             <Label Text="MON"
                    Grid.Row="1"
                    TextColor="Black"
@@ -127,11 +116,11 @@
                    VerticalOptions="Center"
                    Grid.Column="6"/>
                 <CarouselView x:Name="carousel"
-                          PositionChanged="carousel_PositionChanged"
-                          ItemsSource="{Binding Months}"
+                              PositionChanged="carousel_PositionChanged"
+                              ItemsSource="{Binding Months}"
                               HeightRequest="{Binding Width, Source={RelativeSource Self}}"
-                          Grid.Row="2"
-                          Grid.ColumnSpan="7">
+                              Grid.Row="2"
+                              Grid.ColumnSpan="7">
                     <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <controls:CalendarViewItemMonth Month="{Binding Date}"
@@ -152,10 +141,10 @@
                    Grid.ColumnSpan="7"
                    HorizontalOptions="Center"
                    Grid.Row="4"/>
-            <CollectionView ItemsSource="{Binding SelectedReminders}"
-                            Grid.ColumnSpan="7"
-                            Grid.Row="5">
-                <CollectionView.ItemTemplate>
+            <StackLayout BindableLayout.ItemsSource="{Binding SelectedReminders}"
+                         Grid.ColumnSpan="7"
+                         Grid.Row="5" HorizontalOptions="FillAndExpand">
+                <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <Grid x:DataType="controls:Reminder">
                             <Grid.ColumnDefinitions>
@@ -189,10 +178,10 @@
                                    Grid.Column="1"
                                    Grid.Row="1"/>
                             <Button Text="x"
-                                   HeightRequest="20"
-                                   WidthRequest="20"
-                                   CornerRadius="10"
-                                   Grid.Column="2"
+                                    HeightRequest="20"
+                                    WidthRequest="20"
+                                    CornerRadius="10"
+                                    Grid.Column="2"
                                     Grid.RowSpan="2"
                                     HorizontalOptions="Center"
                                     VerticalOptions="Center"
@@ -201,8 +190,8 @@
                             </Button>
                         </Grid>
                     </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
         </Grid>
     </ContentView.Content>
 </ContentView>
